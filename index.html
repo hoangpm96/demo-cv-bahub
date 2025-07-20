@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phạm Thùy Linh - Business Analyst</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .resume-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .header .position {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-item:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        .contact-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 0;
+        }
+
+        .sidebar {
+            background: #f8f9fa;
+            padding: 40px 30px;
+            border-right: 3px solid #e9ecef;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #e74c3c;
+        }
+
+        .summary {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .skills-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #3498db;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-category h4 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .skill-category p {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .experience-item {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .company {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .position-title {
+            font-size: 1rem;
+            color: #3498db;
+            margin: 5px 0;
+        }
+
+        .duration {
+            background: #e74c3c;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        .project {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(52, 152, 219, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid #3498db;
+        }
+
+        .project-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .project-tasks {
+            list-style: none;
+        }
+
+        .project-tasks li {
+            margin: 5px 0;
+            padding-left: 20px;
+            position: relative;
+            color: #555;
+        }
+
+        .project-tasks li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-size: 0.8rem;
+        }
+
+        .education-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 3px solid #e74c3c;
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .education-info h4 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .education-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .education-year {
+            background: #2c3e50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+            transition: all 0.3s ease;
+            font-size: 14px;
+            z-index: 1000;
+        }
+
+        .print-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .experience-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .print-btn {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .resume-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .print-btn {
+                display: none;
+            }
+            
+            .header::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <header class="header">
+            <h1>PHẠM THÙY LINH</h1>
+            <p class="position">BUSINESS ANALYST FRESHER / JUNIOR</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    phamthuylinh2782000@gmail.com
+                </div>
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                    </svg>
+                    0866839295
+                </div>
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    41 Thái Hà - Đống Đa - Hà Nội
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <div class="section">
+                    <div class="summary">
+                        <h3 style="margin-bottom: 15px;">TÓM TẮT</h3>
+                        <p>Có gần 1,5 năm kinh nghiệm trong vị trí Tester và 6 tháng kinh nghiệm trong vị trí Business analyst. Kinh nghiệm viết testcase, test web, test app, test API, performance, log bug trên Jira. Có tinh thần trách nhiệm, cẩn thận, nhiệt tình, chịu được áp lực công việc cao.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">KỸ NĂNG</h3>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>Kỹ năng chuyên môn</h4>
+                            <p>Viết testcase, test web, test app, test API, performance testing</p>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Phân tích & Tài liệu</h4>
+                            <p>Kỹ năng phân tích, viết tài liệu SRS, tài liệu hướng dẫn sử dụng</p>
+                        </div>
+                        <div class="skill-category">
+                            <h4>UI/UX & Thiết kế</h4>
+                            <p>Giao diện UI/UX, Figma, Draw.io, Visio</p>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Công cụ</h4>
+                            <p>Microsoft Office, DBeaver, Jira, Postman</p>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Quy trình phát triển</h4>
+                            <p>Agile, Scrum</p>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Kỹ năng mềm</h4>
+                            <p>Làm việc nhóm, quản lý thời gian, ham học hỏi, chịu áp lực</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">HỌC VẤN</h3>
+                    <div class="education-item">
+                        <div class="education-info">
+                            <h4>HỌC VIỆN NGÂN HÀNG</h4>
+                            <p>KINH TẾ ĐẦU TƯ</p>
+                        </div>
+                        <div class="education-year">2018-2022</div>
+                    </div>
+                    
+                    <div class="education-item">
+                        <div class="education-info">
+                            <h4>HỌC VIỆN ĐÀO TẠO TESTER VIỆT NAM</h4>
+                            <p>KHÓA TESTER</p>
+                        </div>
+                        <div class="education-year">01/2022-04/2022</div>
+                    </div>
+                    
+                    <div class="education-item">
+                        <div class="education-info">
+                            <h4>KHÓA BA THỰC CHIẾN</h4>
+                            <p>CỦA ANH ĐỖ LINH</p>
+                        </div>
+                        <div class="education-year">02/2023-04/2023</div>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="content">
+                <div class="section">
+                    <h3 class="section-title">KINH NGHIỆM LÀM VIỆC</h3>
+                    
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <div class="company">CÔNG TY CỔ PHẦN CÔNG NGHỆ BESTPRICE</div>
+                                <div class="position-title">TESTER & BUSINESS ANALYST</div>
+                            </div>
+                            <div class="duration">05/2023-12/2023</div>
+                        </div>
+                        
+                        <div class="project">
+                            <div class="project-title">DỰ ÁN THƯƠNG MẠI ĐIỆN TỬ MẢNG DƯỢC</div>
+                            <ul class="project-tasks">
+                                <li>Phân tích yêu cầu của đội nghiệp vụ</li>
+                                <li>Phân tích thảo luận giải pháp cùng PM và đội nghiệp vụ</li>
+                                <li>Viết tài liệu SRS, tài liệu hướng dẫn sử dụng</li>
+                                <li>Trao đổi cùng nhóm DEV trong quá trình xây dựng hệ thống</li>
+                                <li>Tạo TestCase và thực thi TestCase</li>
+                                <li>Log bug và quản lý bug trên Jira</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="project">
+                            <div class="project-title">DỰ ÁN THƯƠNG MẠI ĐIỆN TỬ MẢNG DU LỊCH</div>
+                            <ul class="project-tasks">
+                                <li>Phân tích yêu cầu của đội nghiệp vụ</li>
+                                <li>Phân tích thảo luận giải pháp cùng PM và đội nghiệp vụ</li>
+                                <li>Viết tài liệu SRS, tài liệu hướng dẫn sử dụng</li>
+                                <li>Trao đổi cùng nhóm DEV trong quá trình xây dựng hệ thống</li>
+                                <li>Tạo TestCase và thực thi TestCase</li>
+                                <li>Log bug và quản lý bug trên Jira</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <div class="company">CÔNG TY CỔ PHẦN CÔNG NGHỆ THÔNG TIN SMAC VIỆT NAM</div>
+                                <div class="position-title">TESTER</div>
+                            </div>
+                            <div class="duration">06/2022-05/2023</div>
+                        </div>
+                        
+                        <div class="project">
+                            <div class="project-title">DỰ ÁN BANKING</div>
+                            <ul class="project-tasks">
+                                <li>Phân tích tài liệu đặc tả</li>
+                                <li>Tạo Checklist</li>
+                                <li>Tạo TestCase và Review TestCase</li>
+                                <li>Thực thi TestCase</li>
+                                <li>Log bug và quản lý bug trên Jira</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="project">
+                            <div class="project-title">DỰ ÁN THƯƠNG MẠI ĐIỆN TỬ</div>
+                            <ul class="project-tasks">
+                                <li>Phân tích tài liệu đặc tả</li>
+                                <li>Tạo Checklist</li>
+                                <li>Tạo TestCase và Review TestCase</li>
+                                <li>Cập nhật TestCase cho mỗi vòng test</li>
+                                <li>Thực thi TestCase - Sử dụng câu lệnh truy vấn SQL</li>
+                                <li>Log bug và quản lý bug trên Jira</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <button class="print-btn" onclick="window.print()">
+        <svg style="width: 16px; height: 16px; margin-right: 8px; fill: currentColor;" viewBox="0 0 24 24">
+            <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/>
+        </svg>
+        In CV
+    </button>
+
+    <script>
+        // Add smooth scrolling animation for sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animation
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.animationPlayState = 'paused';
+            observer.observe(section);
+        });
+
+        // Add hover effect for skill categories
+        document.querySelectorAll('.skill-category').forEach(skill => {
+            skill.addEventListener('mouseenter', function() {
+                this.style.borderLeftColor = '#e74c3c';
+            });
+            
+            skill.addEventListener('mouseleave', function() {
+                this.style.borderLeftColor = '#3498db';
+            });
+        });
+
+        // Add interactive effects for experience items
+        document.querySelectorAll('.experience-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.borderLeftColor = '#e74c3c';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.borderLeftColor = '#3498db';
+            });
+        });
+
+        // Print functionality with custom styles
+        window.addEventListener('beforeprint', () => {
+            document.body.style.background = 'white';
+        });
+
+        window.addEventListener('afterprint', () => {
+            document.body.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.querySelector('.resume-container').style.opacity = '1';
+        });
+
+        // Smooth scrolling for mobile
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.section').forEach((section, index) => {
+                section.style.animationDelay = `${index * 0.2}s`;
+            });
+        }
+    </script>
+</body>
+</html>
